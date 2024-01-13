@@ -149,8 +149,17 @@ class MainActivity : AppCompatActivity() , View.OnClickListener {
                 R.id.btn_comma -> {
                     action = "."
                 }
-                //+/-
-                //poprawki
+                R.id.btn_positive_negative -> {
+                    action = "+/-"
+                    if(currentNum.text.toString().toDouble() > 0) {
+                        currentNum.text = "-" + currentNum.text
+                        num1 = currentNum.text.toString().toDouble()
+                    }
+                    else {
+                        currentNum.text = currentNum.text.drop(1)
+                        num1 = currentNum.text.toString().toDouble()
+                    }
+                }
                 R.id.btn_equals -> {
                     if(action != ""){
                         when(action) {
@@ -187,9 +196,6 @@ class MainActivity : AppCompatActivity() , View.OnClickListener {
         catch (e: NumberFormatException) {
             println("Error")
         }
-        println(accumulate)
-        println(num1)
-        println(num2)
     }
     private fun setNum() {
         if(num1 == 0.0) {
